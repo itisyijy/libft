@@ -6,7 +6,7 @@
 /*   By: jeongyle <jeongyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:11:40 by jeongyle          #+#    #+#             */
-/*   Updated: 2022/12/22 13:04:50 by jeongyle         ###   ########.fr       */
+/*   Updated: 2022/12/25 21:49:15 by jeongyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		while (len > 0)
 		{
 			len--;
-			((char *)dst)[len] = ((char *)src)[len];
+			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
 		}
 	}
 	else
