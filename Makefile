@@ -6,21 +6,21 @@
 #    By: jeongyle <jeongyle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/21 19:59:27 by jeongyle          #+#    #+#              #
-#    Updated: 2022/12/27 21:14:50 by jeongyle         ###   ########.fr        #
+#    Updated: 2022/12/28 12:57:11 by jeongyle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME	= libft.a
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CC		= gcc
+CFLAG	= -Wall -Wextra -Werror
 
-RM = rm -f
+RM		= rm -f
 
-AR = ar
-ARFLAGS = crs
+AR		= ar
+ARFLAGS       = crs
 
-INCLUDES = ./libft.h 
+INCLUDES	= ./libft.h 
 
 SRCS_1	= ft_strlen.c		\
 		  ft_strlcpy.c		\
@@ -69,33 +69,30 @@ SRC_BONUS = ft_lstnew.c		\
 		  ft_lstmap.c		\
 		  ft_lstdelone.c	\
 
-SRCS = $(SRCS_1)			\
+SRCS	= $(SRCS_1)			\
 	  $(SRCS_2)				\
 
-OBJS = $(SRCS:.c=.o)
+OBJS	= $(SRCS:.c=.o)
 
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
 
-ifdef WITH_BONUS
-	OBJS_FILES = $(OBJS) $(OBJS_BONUS)
-else
-	OBJS_FILES = $(OBJS)
-endif
+all : $(NAME)
 
-all: $(NAME)
+%.o : %.c
+	$(CC) $(CFLAG) -c $< -o $@
 
-$(NAME): $(OBJS_FILES)
-	ar -rc $(NAME) $(OBJS_FILES)
+clean :
+	$(RM) $(RMFLAG) $(OBJS) $(OBJS_BONUS)
 
-bonus:
-	make WITH_BONUS=1 all
+fclean : clean
+	$(RM) $(RMFLAG) $(NAME)
 
-clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+re : fclean all
 
-fclean: clean
-	$(RM) $(NAME)
+$(NAME) : $(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
 
-re: fclean all
+bonus : $(OBJS) $(OBJS_BONUS)
+	$(AR) $(ARFLAGS) $(NAME) $^
 
-.PHONY:all bonus clean fclean re
+.PHONY : all clean fclean re
