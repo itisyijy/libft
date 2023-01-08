@@ -1,6 +1,3 @@
 # libft
-42Seoul, Circle 0
 
-Try:	0
-
-Score:	0
+https://cdn.intra.42.fr/pdf/pdf/67966/en.subject.pdf
